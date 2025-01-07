@@ -1,0 +1,97 @@
+---
+title: "myscript"
+author: "Taylor PD"
+date: "2025-01-07"
+output:
+  html_document: default
+  pdf_document: default
+---
+[GitHub Repository](https://github.com/Taylorpd4/BIOL432_Assignment1TP)
+
+## Introduction
+This report shows the introductory process including the necessary skills that are applyed when analyzing biological measurement data. It executes two R scripts, `dataGenerato.R` and `volumeEstimato.R`, to create and enhance the dataset. This report also includes data sorting, summary statistics, and visualizations.
+```{r}
+# Load required libraries
+library(dplyr)
+library(ggplot2)
+library(tidyr)
+```
+
+## Step 1: Execute R Scripts
+### 1.1 Generate Data
+The script `dataGenerato.R` creates a dataset with 100 observations, including species names, limb measurements, and observer names. the dataset is saved as `measurements.csv`.
+
+```{r}
+source("dataGenerato.R")
+```
+
+### 1.2 Estimate Volume
+The script `volumeEstimato.R` calculates the limb volume for each observation. It adds this data as a new column to `measurements.csv`.
+
+```{r}
+source("volumeEstimato.R")
+```
+
+## Step 2: Load and Prepare Data
+
+```{r}
+data <- read.csv("measurements.csv")
+```
+
+### 2.1 Sort Data by Species, Observer, and Limb Volume
+
+```{r}
+sorted_data <- data %>% arrange(Species, Observer, Volume)
+head(sorted_data)
+```
+
+### 2.2 Create Table of Average Volume by Species
+
+```{r}
+average_volume <- data %>% 
+  group_by(Species) %>% 
+  summarise(Average_Volume = mean(Volume, na.rm = TRUE))
+
+knitr::kable(average_volume, caption = "Average Limb Volume by Species")
+```
+
+### 2.3 Create Table of Observation Counts by Species and Observer
+
+```{r}
+observation_counts <- data %>% 
+  group_by(Species, Observer) %>% 
+  summarise(Count = n(), .groups = "drop")
+
+knitr::kable(observation_counts, caption = "Observation Counts by Species and Observer")
+```
+
+## Step 3: Visualizations
+
+### 3.1 Box Plot of Volume by Species
+
+```{r}
+library(ggplot2)
+ggplot(data, aes(x = Species, y = Volume, fill = Species)) + 
+  geom_boxplot() + 
+  labs(title = "Distribution of Limb Volumes by Species", x = "Species", y = "Limb Volume") + 
+  theme_minimal()
+```
+
+### 3.2 Multi-Panel Histograms of Volume by Species
+
+```{r}
+ggplot(data, aes(x = Volume)) + 
+  geom_histogram(binwidth = 5, fill = "blue", color = "black", alpha = 0.7) + 
+  facet_wrap(~ Species, scales = "free") + 
+  labs(title = "Frequency Distribution of Limb Volume by Species", x = "Limb Volume", y = "Frequency") + 
+  theme_minimal()
+```
+
+## Conclusion
+This report provides a complete workflow for analyzing biological measurement data.
+
+
+```
+
+
+

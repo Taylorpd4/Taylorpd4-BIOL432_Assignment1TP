@@ -1,0 +1,345 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={myscript},
+  pdfauthor={Taylor PD},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{myscript}
+\author{Taylor PD}
+\date{2025-01-07}
+
+\begin{document}
+\maketitle
+
+\href{https://github.com/Taylorpd4/BIOL432_Assignment1TP}{GitHub
+Repository}
+
+\subsection{Introduction}\label{introduction}
+
+This report shows the introductory process including the necessary
+skills that are applyed when analyzing biological measurement data. It
+executes two R scripts, \texttt{dataGenerato.R} and
+\texttt{volumeEstimato.R}, to create and enhance the dataset. This
+report also includes data sorting, summary statistics, and
+visualizations.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Load required libraries}
+\FunctionTok{library}\NormalTok{(dplyr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'dplyr'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{library}\NormalTok{(tidyr)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Step 1: Execute R Scripts}\label{step-1-execute-r-scripts}
+
+\subsubsection{1.1 Generate Data}\label{generate-data}
+
+The script \texttt{dataGenerato.R} creates a dataset with 100
+observations, including species names, limb measurements, and observer
+names. the dataset is saved as \texttt{measurements.csv}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{source}\NormalTok{(}\StringTok{"dataGenerato.R"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Data has been generated and saved to measurements.csv
+\end{verbatim}
+
+\subsubsection{1.2 Estimate Volume}\label{estimate-volume}
+
+The script \texttt{volumeEstimato.R} calculates the limb volume for each
+observation. It adds this data as a new column to
+\texttt{measurements.csv}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{source}\NormalTok{(}\StringTok{"volumeEstimato.R"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Volume column has been added to measurements.csv
+\end{verbatim}
+
+\subsection{Step 2: Load and Prepare
+Data}\label{step-2-load-and-prepare-data}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"measurements.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{2.1 Sort Data by Species, Observer, and Limb
+Volume}\label{sort-data-by-species-observer-and-limb-volume}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sorted\_data }\OtherTok{\textless{}{-}}\NormalTok{ data }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{arrange}\NormalTok{(Species, Observer, Volume)}
+\FunctionTok{head}\NormalTok{(sorted\_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##            Species Limb_Width Limb_Length Observer   Volume
+## 1 Corvus splendens   2.651710    28.29353    GayaS 156.2532
+## 2 Corvus splendens   3.432325    43.54084    GayaS 402.8686
+## 3 Corvus splendens   4.536443    27.32467    GayaS 441.6476
+## 4 Corvus splendens   5.535917    21.08971    GayaS 507.6212
+## 5 Corvus splendens   5.853895    25.05161    GayaS 674.2414
+## 6 Corvus splendens   6.184931    29.19606    GayaS 877.1700
+\end{verbatim}
+
+\subsubsection{2.2 Create Table of Average Volume by
+Species}\label{create-table-of-average-volume-by-species}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{average\_volume }\OtherTok{\textless{}{-}}\NormalTok{ data }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_by}\NormalTok{(Species) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{Average\_Volume =} \FunctionTok{mean}\NormalTok{(Volume, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{))}
+
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(average\_volume, }\AttributeTok{caption =} \StringTok{"Average Limb Volume by Species"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lr@{}}
+\caption{Average Limb Volume by Species}\tabularnewline
+\toprule\noalign{}
+Species & Average\_Volume \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+Species & Average\_Volume \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Corvus splendens & 589.1492 \\
+Equus caballus & 623.4305 \\
+Formicidae & 632.5103 \\
+Hippopotamus amphibius & 684.0618 \\
+Urusus americanus & 559.7205 \\
+\end{longtable}
+
+\subsubsection{2.3 Create Table of Observation Counts by Species and
+Observer}\label{create-table-of-observation-counts-by-species-and-observer}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{observation\_counts }\OtherTok{\textless{}{-}}\NormalTok{ data }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_by}\NormalTok{(Species, Observer) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{Count =} \FunctionTok{n}\NormalTok{(), }\AttributeTok{.groups =} \StringTok{"drop"}\NormalTok{)}
+
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(observation\_counts, }\AttributeTok{caption =} \StringTok{"Observation Counts by Species and Observer"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llr@{}}
+\caption{Observation Counts by Species and Observer}\tabularnewline
+\toprule\noalign{}
+Species & Observer & Count \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+Species & Observer & Count \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Corvus splendens & GayaS & 7 \\
+Corvus splendens & MaryT & 9 \\
+Corvus splendens & NithilaS & 3 \\
+Equus caballus & GayaS & 2 \\
+Equus caballus & MaryT & 10 \\
+Equus caballus & NithilaS & 5 \\
+Formicidae & GayaS & 8 \\
+Formicidae & MaryT & 6 \\
+Formicidae & NithilaS & 6 \\
+Hippopotamus amphibius & GayaS & 9 \\
+Hippopotamus amphibius & MaryT & 9 \\
+Hippopotamus amphibius & NithilaS & 5 \\
+Urusus americanus & GayaS & 9 \\
+Urusus americanus & MaryT & 8 \\
+Urusus americanus & NithilaS & 4 \\
+\end{longtable}
+
+\subsection{Step 3: Visualizations}\label{step-3-visualizations}
+
+\subsubsection{3.1 Box Plot of Volume by
+Species}\label{box-plot-of-volume-by-species}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{ggplot}\NormalTok{(data, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Species, }\AttributeTok{y =}\NormalTok{ Volume, }\AttributeTok{fill =}\NormalTok{ Species)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_boxplot}\NormalTok{() }\SpecialCharTok{+} 
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Distribution of Limb Volumes by Species"}\NormalTok{, }\AttributeTok{x =} \StringTok{"Species"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Limb Volume"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{FinalReport_files/figure-latex/unnamed-chunk-8-1.pdf}
+
+\subsubsection{3.2 Multi-Panel Histograms of Volume by
+Species}\label{multi-panel-histograms-of-volume-by-species}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(data, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Volume)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \DecValTok{5}\NormalTok{, }\AttributeTok{fill =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{, }\AttributeTok{alpha =} \FloatTok{0.7}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{ Species, }\AttributeTok{scales =} \StringTok{"free"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Frequency Distribution of Limb Volume by Species"}\NormalTok{, }\AttributeTok{x =} \StringTok{"Limb Volume"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Frequency"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{FinalReport_files/figure-latex/unnamed-chunk-9-1.pdf}
+
+\subsection{Conclusion}\label{conclusion}
+
+This report provides a complete workflow for analyzing biological
+measurement data.
+
+```
+
+\end{document}
