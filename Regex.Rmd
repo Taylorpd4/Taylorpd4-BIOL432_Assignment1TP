@@ -1,0 +1,33 @@
+---
+title: "432Assignment2"
+author: "Taylorpd4"
+date: "2025-01-13"
+output: html_document
+---
+[GitHub Repository](https://github.com/Taylorpd4/Taylorpd4-BIOL432_Assignment1TP)
+
+```{r}
+# Load required libraries
+library(dplyr)
+library(stringr)
+```
+```{r}
+MData <- read.csv("measurements.csv", stringsAsFactors = FALSE)
+head(MData) # Display first few rows
+```
+
+```{r}
+MData<-MData%>%
+  mutate(Sp=gsub("(\\w).(\\w*)_(\\w*).*", "\\1.\\3", MData$Species))
+View(MData)
+```
+
+```{r}
+NewMData<- MData %>%
+  select(Sp, Limb_Width, Limb_Length, Observer)
+```
+
+
+```{r}
+write.csv(NewMData, "MeasShort.csv", row.names = FALSE)
+```
